@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "my_object.h": "c",
+        "stddef.h": "c",
+        "stdlib.h": "c",
+        "my_utils.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "my_mem.h": "c",
+        "*.tcc": "c"
+    }
+}
