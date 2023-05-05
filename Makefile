@@ -5,56 +5,57 @@
 ## Makefile
 ##
 
+CC			?=	gcc
+LDFLAGS		+=	-L $(LIB_DIR)
+LDLIBS		+=	-lmy
+CPPFLAGS	+=	-iquote $(INC_DIR)
+CFLAGS		+=	-Wall -Wextra -Werror -g3 # -g3 for valgrind lines
 
-INCLUDE_DIR	=	./include
-PROJECT_DIR	=	./src
+INC_DIR		=	./include
+SRC_DIR		=	./src
 LIB_DIR		=	./lib
 
-OBJECT_DIR	=	$(LIB_DIR)/object
-STRING_DIR	=	$(LIB_DIR)/string
+UTILS_DIR	=	$(LIB_DIR)/my_utils
+OBJECT_DIR	=	$(LIB_DIR)/my_object
+STRING_DIR	=	$(LIB_DIR)/my_string
+VECTOR_DIR	=	$(LIB_DIR)/my_vector
+LIST_DIR	=	$(LIB_DIR)/my_list
+DICT_DIR	=	$(LIB_DIR)/my_dict
 
-PROJECT_SRC	=	$(wildcard $(PROJECT_DIR)/*.c)
+LIB			=	$(wildcard $(OBJECT_DIR)/*.c)	\
+				$(wildcard $(STRING_DIR)/*.c)	\
+				$(wildcard $(UTILS_DIR)/*.c)	\
 
-LIB_SRC		=	$(wildcard $(STRING_DIR)/*.c)
+SRC			=	$(wildcard $(SRC_DIR)/*.c)
 
-CC			=	gcc
-INCLUDE		=	-iquote $(INCLUDE_DIR)
-LDFLAGS		=	-L$(LIB_DIR) -lmy
-CFLAGS		=	-W -Wall -Wextra -g3 $(INCLUDE)
+LIB_OBJ		=	$(LIB:.c=.o)
+SRC_OBJ		=	$(SRC:.c=.o)
 
-SRC_OBJ		=	$(PROJECT_SRC:.c=.o)
-LIB_OBJ		=	$(LIB_SRC:.c=.o)
+BIN_NAME	=	my_lib
+LIB_NAME	=	$(LIB_DIR)/libmy.a
 
-NAME		=	my_lib
-NAME_LIB	=	$(LIB_DIR)/libmy.a
 
-all: $(NAME_LIB) $(NAME)
+all: $(LIB_NAME) $(BIN_NAME)
 
-$(NAME): $(SRC_OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS) $(CFLAGS)
+$(BIN_NAME): $(SRC_OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS) $(CFLAGS) $(CPPFLAGS)
 
-$(NAME_LIB): $(LIB_OBJ)
+$(LIB_NAME): $(LIB_OBJ)
 	ar rc $@ $^
 
 clean:
-	$(RM) *\~ vgcore* *\.o $(TEST_DIR)/*\.gcda $(TEST_DIR)/*\.gcno \
-	$(SRC_OBJ) $(LIB_OBJ)
+	$(RM) $(SRC_OBJ) $(LIB_OBJ)
+	@ ./scripts/clean.sh
 
 fclean:	clean
-	$(RM) $(NAME) $(NAME_LIB) $(NAME_TEST)
+	$(RM) $(BIN_NAME) $(LIB_NAME)
 	clear
 
 re: fclean all
 
-coding_style: fclean
+style: fclean
 	../../banana/coding-style.sh . ../../banana/
 	clear
 	@ cat ../../banana/coding-style-reports.log
 
-test_lib: fclean $(NAME_TEST) clean
-	valgrind ./$(NAME_TEST)
-
-coverage: test_lib
-	gcovr --exclude $(TEST_DIR) --exclude $(PROJECT_DIR)
-
-.PHONY:	all	clean fclean re coding_style test_lib coverage
+.PHONY:	all	clean fclean re style

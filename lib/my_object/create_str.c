@@ -8,11 +8,33 @@
 #include "my_object.h"
 #include "my_utils.h"
 
-str_t * create_str(va_list ap)
+static void * create_string(char * init, size_t len)
 {
-    size_t len = len ? len : str_len(init);
     size_t cap = pad_len(len + 1);
-    str_t * str = alloc_obj(STR, sizeof(str_t) + cap * sizeof(char));
+    str_t * str = malloc(S_TYPE + sizeof(str_t) + cap * sizeof(char)) + S_TYPE;
 
-    return NULL;
+    set_obj_type(str, VEC);
+    str->size_data = sizeof(char);
+    str->cap = cap;
+    str->len = len;
+    mem_cpy(str->data, init, len);
+    str->data[len] = '\0';
+
+    return str;
+}
+
+void * create_nstr(va_list ap)
+{
+    char * init = va_arg(ap, char *);
+    size_t len = va_arg(ap, size_t);
+
+    return create_string(init, len);
+}
+
+void * create_str(va_list ap)
+{
+    char * init = va_arg(ap, char *);
+    size_t len = str_len(init);
+
+    return create_string(init, len);
 }
