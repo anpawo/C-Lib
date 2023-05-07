@@ -2,18 +2,21 @@
 Library made for EPITECH during my FIRST YEAR
 
 # Function Used
-- Malloc
-- Free
-- Write
+- Malloc ++
+- Free   ++
 
+- Write
 - Open
 - Read
 
 # Features
-- STRT
-- VECT
-- LIST
-- DICT
+- VECT  -> optimised array. no more malloc / free.
+- LIST  -> optimised array of objects.
+- DICT  -> keys of any type associated with values of any type.
 
-Every Features is an Object associated with a destructor,
-meaning you do not have to call the free function.
+Every object is associated with a type.
+The type of an object is used to call every function
+like compare, append, and more...
+
+I use the attribute cleanup to simply auto_free every
+object created so free is not needed anymore.
