@@ -16,5 +16,4 @@
     #define SUCCESS 0
     #define ERROR 84
 
-
 #endif /* PROJECT */

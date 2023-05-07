@@ -7,18 +7,19 @@
 
 #include "my_object.h"
 
-static const void * CREATE_OBJ[] = {
-    &create_str,
-    // &create_nstr,
-    // &create_vec
-};
+void * create_vec(va_list ap);
+// void * create_list(va_list ap);
+// void * create_dict(va_list ap);
+void * create_str(va_list ap);
+void * create_nstr(va_list ap);
 
-// static const void * DESTROY_OBJ[] = {
-//     &destroy_str
-//     // { VEC, "vector", &create_vec },
-//     // { LIST, "list", &__list },
-//     // { DICT, "dict", &__dict }
-// };
+static const void * CREATE_OBJ[] = {
+    &create_vec,
+    NULL, /* list */
+    NULL, /* dico */
+    &create_str,
+    &create_nstr,
+};
 
 void * create(int type, ...)
 {

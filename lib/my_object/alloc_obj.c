@@ -6,13 +6,12 @@
 */
 
 #include "my_object.h"
-#include "my_utils.h"
 
 void * alloc_obj(int type, size_t size)
 {
-    void * obj = malloc(sizeof(int) + size);
+    void * obj = malloc(sizeof(int) + size) + sizeof(int);
 
-    mem_cpy(obj, &type, sizeof(int));
+    set_obj_type(obj, type);
 
-    return obj + sizeof(int);
+    return obj;
 }

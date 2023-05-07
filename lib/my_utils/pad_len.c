@@ -7,7 +7,7 @@
 
 #include "my_utils.h"
 
-size_t pad_nbr(size_t nbr)
+size_t pad_len(size_t nbr)
 {
     size_t cap = 1;
 

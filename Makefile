@@ -9,7 +9,7 @@ CC			?=	gcc
 LDFLAGS		+=	-L $(LIB_DIR)
 LDLIBS		+=	-lmy
 CPPFLAGS	+=	-iquote $(INC_DIR)
-CFLAGS		+=	-Wall -Wextra -Werror -g3 # -g3 for valgrind lines
+CFLAGS		+=	-Wall -Wextra -g3 # -g3 for valgrind lines
 
 INC_DIR		=	./include
 SRC_DIR		=	./src
@@ -25,6 +25,7 @@ DICT_DIR	=	$(LIB_DIR)/my_dict
 LIB			=	$(wildcard $(OBJECT_DIR)/*.c)	\
 				$(wildcard $(STRING_DIR)/*.c)	\
 				$(wildcard $(UTILS_DIR)/*.c)	\
+				$(wildcard $(VECTOR_DIR)/*.c)	\
 
 SRC			=	$(wildcard $(SRC_DIR)/*.c)
 

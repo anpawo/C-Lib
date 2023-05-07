@@ -8,7 +8,7 @@
 #ifndef MY_MEMORY
     #define MY_MEMORY
 
-    #include <stddef.h>
+    typedef unsigned long size_t;
 
     #define BYTE_COPY(dstpp, srcpp, __nbytes) \
     do {   \

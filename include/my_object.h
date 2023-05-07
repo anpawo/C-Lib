@@ -14,25 +14,24 @@
     #include "my_def.h"
 
 /**
- * @brief existing objects. they represent an index of the function used
- * to create them. they are many ways to create certain objects.
+ * @brief functions to create objects. they represent an index of the function
+ * used to create them. they are many ways to create certain objects.
 */
 enum OBJECT {
-    STR,
-    NSTR,
     VEC,
     LIST,
     DICT,
+    STR,
 };
 
-/*
-INT = VEC,
-ULONG = VEC
-*/
+enum SPECIAL_CREATE {
+    NSTR = STR + 1
+};
 
 VEC_DEF(char, str)
 VEC_DEF(int, int)
 VEC_DEF(size_t, ulong)
+VEC_DEF(double, double)
 
 typedef struct list_s {
     size_t len;
@@ -41,28 +40,39 @@ typedef struct list_s {
 } list_t;
 
 /**
+ * @brief create an object. objects are auto-freed thanks to the id attached
+ * to them. The id is used by the macro AUTO_FREE.
+*/
+void * create(int type, ...);
+void * append(void * ptr, ...);
+void * insert(void * ptr, ...);
+void destroy(void * ptr);
+
+/**
  * @brief set the type of an object
  *
  * @param obj target object
- * @param type type of the obj
+ * @param type type of the object
 */
 void set_obj_type(void * obj, int type);
 
 /**
  * @brief get the type of an object
  *
- * @param obj target obj
+ * @param obj target object
  *
  * @return type of the object as an integer
 */
 int get_obj_type(void * obj);
 
 /**
- * @brief create an object. objects are auto-freed thanks to the id attached
- * to them. The id is used by the macro AUTO_FREE aka __attribute__((cleanup)).
+ * @brief allocate an object and his hidden part (type).
+ *
+ * @param type type of the object
+ * @param size size of the structure of the object
+ *
+ * @return the allocated object
 */
-void * create(int type, ...);
-void * create_str(va_list ap);
-// void * create_vec(va_list ap);
+void * alloc_obj(int type, size_t size);
 
 #endif /* MY_OBJECT */

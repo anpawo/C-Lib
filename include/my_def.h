@@ -8,17 +8,19 @@
 #ifndef MY_DEF
     #define MY_DEF
 
-    #define S_TYPE sizeof(int)
+    #define UNUSED __attribute__((unused))
+    #define STR(c) (char[]){c, '\0'}
 
-    #define VEC_DEF(type, name) \
-                                \
-    typedef struct name##_s {   \
-        int size_data;          \
-        size_t len;             \
-        size_t cap;             \
-        type data[0];           \
-    } name##_t;
+    #define AUTO_FREE __attribute__((cleanup(destroy)))
 
     #define vec_t str_t
+    #define VEC_DEF(type, name)     \
+                                    \
+    typedef struct vec_##name##_s {  \
+        int size_data;              \
+        size_t len;                 \
+        size_t cap;                 \
+        type data[0];               \
+    } name##_t;
 
 #endif /* MY_DEF */
