@@ -74,11 +74,11 @@ void * update(void * ptr, ...);
  * @brief delete a certain part of an object.
  *
  * @param ptr & object pointer
- * 
+ *
  * @param obj vect: [index]
  * @param obj list: [index]
  * @param obj dict: [key]
- * 
+ *
  * @return the target object
 */
 void * delete(void * ptr, ...);

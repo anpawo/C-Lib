@@ -8,14 +8,14 @@
 #include "my_object.h"
 
 void * create_vec(va_list ap);
-// void * create_list(va_list ap);
+void * create_list(va_list ap);
 // void * create_dict(va_list ap);
 void * create_str(va_list ap);
 void * create_nstr(va_list ap);
 
 static const void * CREATE_OBJ[] = {
     &create_vec,
-    NULL, /* list */
+    &create_list,
     NULL, /* dico */
     &create_str,
     &create_nstr,

@@ -8,17 +8,19 @@
 #include "my_vector.h"
 #include "my_utils.h"
 
-void * vec_update(void * ptr, va_list ap)
+void * list_update(void * ptr, va_list ap)
 {
-    vec_t * vec = ptr;
+    list_t * list = ptr;
     size_t index = va_arg(ap, size_t);
     void * data = va_arg(ap, void *);
 
-    if (index >= vec->len) {
-        index = vec->len - 1;
+    if (index >= list->len) {
+        index = list->len - 1;
     }
 
-    mem_cpy(vec->data + index * vec->size_data, data, vec->size_data);
+    destroy(&(list->data[index]));
 
-    return vec;
+    list->data[index] = data;
+
+    return list;
 }

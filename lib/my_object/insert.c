@@ -8,12 +8,12 @@
 #include "my_object.h"
 
 void * vec_insert(void * ptr, va_list ap);
-// void * list_append(void ** ptr, va_list ap);
-// void * dict_append(void ** ptr, va_list ap);
+void * list_insert(void * ptr, va_list ap);
+// void * dict_insert(void * ptr, va_list ap);
 
 static const void * INSERT_DATA[] = {
     &vec_insert,
-    NULL, /* list */
+    &list_insert,
     NULL, /* dico */
 };
 

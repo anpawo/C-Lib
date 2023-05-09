@@ -36,6 +36,7 @@
         "deque": "c",
         "unordered_map": "c",
         "vector": "c",
-        "ostream": "c"
+        "ostream": "c",
+        "my_list.h": "c"
     }
 }

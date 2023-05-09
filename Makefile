@@ -17,15 +17,14 @@ LIB_DIR		=	./lib
 
 UTILS_DIR	=	$(LIB_DIR)/my_utils
 OBJECT_DIR	=	$(LIB_DIR)/my_object
-STRING_DIR	=	$(LIB_DIR)/my_string
 VECTOR_DIR	=	$(LIB_DIR)/my_vector
 LIST_DIR	=	$(LIB_DIR)/my_list
 DICT_DIR	=	$(LIB_DIR)/my_dict
 
 LIB			=	$(wildcard $(OBJECT_DIR)/*.c)	\
-				$(wildcard $(STRING_DIR)/*.c)	\
 				$(wildcard $(UTILS_DIR)/*.c)	\
 				$(wildcard $(VECTOR_DIR)/*.c)	\
+				$(wildcard $(LIST_DIR)/*.c)	\
 
 SRC			=	$(wildcard $(SRC_DIR)/*.c)
 
@@ -55,8 +54,8 @@ fclean:	clean
 re: fclean all
 
 style: fclean
-	../../banana/coding-style.sh . ../../banana/
+	../delivery/banana/coding-style.sh . ../delivery/banana/
 	clear
-	@ cat ../../banana/coding-style-reports.log
+	@ cat ../delivery/banana/coding-style-reports.log
 
 .PHONY:	all	clean fclean re style

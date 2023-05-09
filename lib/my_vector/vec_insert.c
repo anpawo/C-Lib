@@ -7,7 +7,6 @@
 
 #include "my_vector.h"
 #include "my_utils.h"
-#include "stdio.h"
 
 static void * string_insert(void * ptr, char * data, size_t index)
 {
@@ -70,4 +69,3 @@ void * vec_insert(void * ptr, va_list ap)
 
     return vector_insert(ptr, data, index);
 }
-

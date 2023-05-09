@@ -48,10 +48,11 @@ VEC_DEF(int, int)
 VEC_DEF(size_t, ulong)
 VEC_DEF(double, double)
 
+/* can be any ptr */
 typedef struct list_s {
     size_t len;
     size_t cap;
-    void * data[0];
+    str_t * data[0];
 } list_t;
 
 #endif /* MY_DEF */

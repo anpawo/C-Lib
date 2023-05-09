@@ -8,12 +8,12 @@
 #include "my_object.h"
 
 void * vec_update(void * ptr, va_list ap);
-// void * create_list(va_list ap);
-// void * create_dict(va_list ap);
+void * list_update(void * ptr, va_list ap);
+// void * dict_update(void * ptr, va_list ap);
 
 static const void * UPDATE_DATA[] = {
     &vec_update,
-    NULL, /* list */
+    &list_update,
     NULL, /* dico */
 };
 
@@ -25,7 +25,7 @@ void * update(void * ptr, ...)
     va_list ap;
 
     va_start(ap, ptr);
-    obj = update_data(ptr, ap);
+    obj = update_data(obj, ap);
     va_end(ap);
 
     return obj;

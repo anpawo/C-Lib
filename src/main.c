@@ -7,28 +7,24 @@
 
 #include "project.h"
 
-static void print_vec(int_t * vec)
+static void print_list(list_t * list)
 {
-    for (size_t i = 0; i < vec->len; i++) {
-        printf("%d", vec->data[i]);
+    for (size_t i = 0; i < list->len; i++) {
+        printf("%s\n", list->data[i]->data);
     }
-    printf("\n");
 }
 
 int main(void)
 {
-    AUTO_FREE int_t * vec = VEC(sizeof(int), 3);
+    AUTO_FREE list_t * list = create(LIST, 1);
 
-    for (int i = 0; i < 3; i++) {
-        insert(&vec, 0, &i);
-        append(&vec, &i);
-    }
-    print_vec(vec);
-    size_t n[] = {18};
-    update(&vec, 2, n);
-    print_vec(vec);
-    return SUCCESS;
+    append(&list, STR("hello"));
+    append(&list, STR("yo"));
+    append(&list, STR("salut"));
+    insert(&list, 1, STR("boo"));
+    insert(&list, 0, STR("boo"));
+    update(&list, 0, STR("TEST"));
+    delete(&list, 2);
+
+    print_list(list);
 }
-
-// output:
-// je suis marius !

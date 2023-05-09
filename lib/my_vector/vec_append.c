@@ -23,8 +23,8 @@ static void * vector_append(void * ptr, ...)
 void * vec_append(void * ptr, va_list ap)
 {
     vec_t * vec = * (void **) ptr;
-    void * data = va_arg(ap, void *);
     size_t index = vec->len;
+    void * data = va_arg(ap, void *);
 
     return vector_append(ptr, index, data);
 }

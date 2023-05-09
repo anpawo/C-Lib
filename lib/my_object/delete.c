@@ -8,10 +8,11 @@
 #include "my_object.h"
 
 void * vec_delete(void * ptr, va_list ap);
+void * list_delete(void * ptr, va_list ap);
 
 static const void * DELETE_DATA[] = {
     &vec_delete,
-    NULL, /* list */
+    &list_delete,
     NULL, /* dico */
 };
 

@@ -8,7 +8,7 @@
 #include "my_vector.h"
 #include "my_utils.h"
 
-void destroy_vec(void * vec)
+void destroy_vec(void * ptr)
 {
-    try_free(vec - sizeof(int));
+    try_free(ptr - sizeof(int));
 }
