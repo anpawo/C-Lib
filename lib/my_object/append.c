@@ -22,7 +22,7 @@ void * append(void * ptr, ...)
 {
     void * obj = * (void **) ptr;
     int type = get_obj_type(obj);
-    void * (* append_data)(void **, va_list) = APPEND_DATA[type];
+    void * (* append_data)(void *, va_list) = APPEND_DATA[type];
     va_list ap;
 
     va_start(ap, ptr);

@@ -26,5 +26,5 @@ void * vec_append(void * ptr, va_list ap)
     void * data = va_arg(ap, void *);
     size_t index = vec->len;
 
-    return vector_append(ptr, data, index);
+    return vector_append(ptr, index, data);
 }

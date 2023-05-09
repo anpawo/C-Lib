@@ -23,7 +23,7 @@ void destroy_vec(void * vec);
 */
 void * vec_append(void * ptr, va_list ap);
 void * vec_insert(void * ptr, va_list ap);
-// void * update(void ** obj, size_t index, void * data);
-// void * delete(void ** obj, size_t index);
+void * vec_delete(void * ptr, va_list ap);
+void * vec_update(void * ptr, va_list ap);
 
 #endif /* MY_VEC */

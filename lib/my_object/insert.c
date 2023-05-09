@@ -15,14 +15,13 @@ static const void * INSERT_DATA[] = {
     &vec_insert,
     NULL, /* list */
     NULL, /* dico */
-    // &str_insert,
 };
 
 void * insert(void * ptr, ...)
 {
     void * obj = * (void **) ptr;
     int type = get_obj_type(obj);
-    void * (* insert_data)(void **, va_list) = INSERT_DATA[type];
+    void * (* insert_data)(void *, va_list) = INSERT_DATA[type];
     va_list ap;
 
     va_start(ap, ptr);

@@ -19,8 +19,8 @@ static void * string_insert(void * ptr, char * data, size_t index)
     }
 
     if (index < str->len) {
-        for (size_t n = str->len - 1; n >= index; n--) {
-            str->data[n + len_data] = str->data[n];
+        for (size_t n = str->len - 1 + len_data; n > index; n--) {
+            str->data[n] = str->data[n - len_data];
         }
     } else if (index > str->len) {
         index = str->len;
@@ -36,14 +36,16 @@ static void * string_insert(void * ptr, char * data, size_t index)
 static void * vector_insert(void * ptr, void * data, size_t index)
 {
     vec_t * vec = * (void **) ptr;
+    size_t n = 0;
 
     if (vec->len == vec->cap) {
         vec = resize_vec(ptr, vec->cap + 1);
     }
 
     if (index < vec->len) {
-        for (size_t n = vec->len; n > index; n--) {
-            vec->data[n] = vec->data[n - 1];
+        n = (vec->len + 1) * vec->size_data - 1;
+        for (; n >= (index + 1) * vec->size_data; n--) {
+            vec->data[n] = vec->data[n - vec->size_data];
         }
     } else if (index > vec->len) {
         index = vec->len;
@@ -58,8 +60,8 @@ static void * vector_insert(void * ptr, void * data, size_t index)
 void * vec_insert(void * ptr, va_list ap)
 {
     vec_t * vec = * (void **) ptr;
-    void * data = va_arg(ap, void *);
     size_t index = va_arg(ap, size_t);
+    void * data = va_arg(ap, void *);
     size_t size_data = vec->size_data;
 
     if (size_data == sizeof(char)) {

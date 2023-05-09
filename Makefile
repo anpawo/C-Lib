@@ -45,11 +45,11 @@ $(LIB_NAME): $(LIB_OBJ)
 	ar rc $@ $^
 
 clean:
-	$(RM) $(SRC_OBJ) $(LIB_OBJ)
+	@ $(RM) $(SRC_OBJ) $(LIB_OBJ)
 	@ ./scripts/clean.sh
 
 fclean:	clean
-	$(RM) $(BIN_NAME) $(LIB_NAME)
+	@ $(RM) $(BIN_NAME) $(LIB_NAME)
 	clear
 
 re: fclean all

@@ -7,22 +7,28 @@
 
 #include "project.h"
 
-// int * ptr = &(str->size_data);
-// int type = ((int *)(ptr - 1))[0];
-
-
-// int get_ptr()
+static void print_vec(int_t * vec)
+{
+    for (size_t i = 0; i < vec->len; i++) {
+        printf("%d", vec->data[i]);
+    }
+    printf("\n");
+}
 
 int main(void)
 {
-    AUTO_FREE str_t * str = create(STR, "je mar?");
+    AUTO_FREE int_t * vec = VEC(sizeof(int), 3);
 
-    printf(":%s:\n", str->data);
-    insert(&str, "suis ", 3);
-    printf(":%s:\n", str->data);
-
-
+    for (int i = 0; i < 3; i++) {
+        insert(&vec, 0, &i);
+        append(&vec, &i);
+    }
+    print_vec(vec);
+    size_t n[] = {18};
+    update(&vec, 2, n);
+    print_vec(vec);
     return SUCCESS;
 }
 
-/* try to modify a string only using .add */
+// output:
+// je suis marius !

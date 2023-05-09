@@ -14,38 +14,80 @@
     #include "my_def.h"
 
 /**
- * @brief functions to create objects. they represent an index of the function
- * used to create them. they are many ways to create certain objects.
-*/
-enum OBJECT {
-    VEC,
-    LIST,
-    DICT,
-    STR,
-};
-
-enum SPECIAL_CREATE {
-    NSTR = STR + 1
-};
-
-VEC_DEF(char, str)
-VEC_DEF(int, int)
-VEC_DEF(size_t, ulong)
-VEC_DEF(double, double)
-
-typedef struct list_s {
-    size_t len;
-    size_t cap;
-    void * data[0];
-} list_t;
-
-/**
- * @brief create an object. objects are auto-freed thanks to the id attached
- * to them. The id is used by the macro AUTO_FREE.
+ * @brief create an object. an object is determined by it's type. every
+ * object has some unique fonction made for it.
+ *
+ * @param type type of the object [STR, VEC, LIST, DICT]
+ * @param -
+ * @param str: [data]
+ * @param vect: [data size, len]
+ * @param list: [len]
+ * @param dict: [len]
+ *
+ * @return a new object
 */
 void * create(int type, ...);
+
+/**
+ * @brief append a certain type of data to an object. the data depends of the
+ * object.
+ *
+ * @param ptr & object pointer
+ *
+ * @param vect: [data]
+ * @param list: [data]
+ * @param dict: [key, value]
+ *
+ * @return the target object
+*/
 void * append(void * ptr, ...);
+
+/**
+ * @brief insert some data to an object. the data depends of the
+ * object.
+ *
+ * @param ptr & object pointer
+ *
+ * @param vect: [index, data]
+ * @param list: [index, data]
+ * @param dict: [key, value]
+ *
+ * @return the target object
+*/
 void * insert(void * ptr, ...);
+
+/**
+ * @brief update the data to an object. the data depends of the
+ * object.
+ *
+ * @param ptr & object pointer
+ *
+ * @param vect: [index, data]
+ * @param list: [index, data]
+ * @param dict: [key, value]
+ *
+ * @return the target object
+*/
+void * update(void * ptr, ...);
+
+/**
+ * @brief delete a certain part of an object.
+ *
+ * @param ptr & object pointer
+ * 
+ * @param obj vect: [index]
+ * @param obj list: [index]
+ * @param obj dict: [key]
+ * 
+ * @return the target object
+*/
+void * delete(void * ptr, ...);
+
+/**
+ * @brief destroy an object. used to free the object depending on his type.
+ *
+ * @param ptr & oject ptr
+*/
 void destroy(void * ptr);
 
 /**
