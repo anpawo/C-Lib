@@ -8,15 +8,20 @@
 #ifndef MY_DEF
     #define MY_DEF
 
+    #include <stddef.h>
+
     #define UNUSED __attribute__((unused))
 
     #define TOSTR(c) ((char[]){c, '\0'})
 
-    #define AUTO_FREE __attribute__((cleanup(destroy)))
+    #define AUTOFREE __attribute__((cleanup(destroy)))
 
     #define STR(s) create(STR, s)
-    #define VEC(s, n) create(VEC, s, n)
-    /* TODO */
+    #define VEC(t, n) create(VEC, t, n)
+    #define LIST(n) create(LIST, n)
+    #define DICT(n) create(DICT, n)
+
+    #define ABS(x) (((x) < 0) ? -(x) : (x))
 
     #define vec_t str_t
     #define VEC_DEF(type, name)     \
@@ -54,5 +59,16 @@ typedef struct list_s {
     size_t cap;
     str_t * data[0];
 } list_t;
+
+typedef struct item_s {
+    str_t * key;
+    str_t * data;
+} item_t;
+
+typedef struct dict_s {
+    size_t len;
+    size_t cap;
+    item_t * item[0];
+} dict_t;
 
 #endif /* MY_DEF */

@@ -9,14 +9,14 @@
 
 void * create_vec(va_list ap);
 void * create_list(va_list ap);
-// void * create_dict(va_list ap);
+void * create_dict(va_list ap);
 void * create_str(va_list ap);
 void * create_nstr(va_list ap);
 
 static const void * CREATE_OBJ[] = {
     &create_vec,
     &create_list,
-    NULL, /* dico */
+    &create_dict,
     &create_str,
     &create_nstr,
 };

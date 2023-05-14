@@ -37,6 +37,10 @@
         "unordered_map": "c",
         "vector": "c",
         "ostream": "c",
-        "my_list.h": "c"
+        "my_list.h": "c",
+        "my_dict.h": "c",
+        "my_print.h": "c",
+        "unistd.h": "c",
+        "cstdlib": "c"
     }
 }

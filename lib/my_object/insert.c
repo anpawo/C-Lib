@@ -9,12 +9,12 @@
 
 void * vec_insert(void * ptr, va_list ap);
 void * list_insert(void * ptr, va_list ap);
-// void * dict_insert(void * ptr, va_list ap);
+void * dict_insert(void * ptr, va_list ap);
 
 static const void * INSERT_DATA[] = {
     &vec_insert,
     &list_insert,
-    NULL, /* dico */
+    &dict_insert,
 };
 
 void * insert(void * ptr, ...)

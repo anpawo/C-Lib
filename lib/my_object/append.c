@@ -9,13 +9,12 @@
 
 void * vec_append(void * ptr, va_list ap);
 void * list_append(void * ptr, va_list ap);
-// void * dict_append(void * ptr, va_list ap);
+void * dict_append(void * ptr, va_list ap);
 
 static const void * APPEND_DATA[] = {
     &vec_append,
     &list_append,
-    NULL, /* dico */
-    // &str_append,
+    &dict_append,
 };
 
 void * append(void * ptr, ...)

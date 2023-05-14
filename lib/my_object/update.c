@@ -9,12 +9,12 @@
 
 void * vec_update(void * ptr, va_list ap);
 void * list_update(void * ptr, va_list ap);
-// void * dict_update(void * ptr, va_list ap);
+void * dict_update(void * ptr, va_list ap);
 
 static const void * UPDATE_DATA[] = {
     &vec_update,
     &list_update,
-    NULL, /* dico */
+    &dict_update,
 };
 
 void * update(void * ptr, ...)

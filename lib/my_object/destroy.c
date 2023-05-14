@@ -9,11 +9,12 @@
 
 void destroy_vec(void * ptr);
 void destroy_list(void * ptr);
+void destroy_dict(void * ptr);
 
 static const void * DESTROY_OBJ[] = {
     &destroy_vec,
     &destroy_list,
-    // &destroy_dict,
+    &destroy_dict,
 };
 
 void destroy(void * ptr)

@@ -9,11 +9,12 @@
 
 void * vec_delete(void * ptr, va_list ap);
 void * list_delete(void * ptr, va_list ap);
+void * dict_delete(void * ptr, va_list ap);
 
 static const void * DELETE_DATA[] = {
     &vec_delete,
     &list_delete,
-    NULL, /* dico */
+    &dict_delete,
 };
 
 void * delete(void * ptr, ...)

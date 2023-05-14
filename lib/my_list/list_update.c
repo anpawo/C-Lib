@@ -5,7 +5,7 @@
 ** create a str_t (string)
 */
 
-#include "my_vector.h"
+#include "my_list.h"
 #include "my_utils.h"
 
 void * list_update(void * ptr, va_list ap)
