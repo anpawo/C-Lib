@@ -11,7 +11,7 @@ size_t pad_len(size_t nbr)
 {
     size_t cap = 1;
 
-    while (cap <= nbr) {
+    while (cap < nbr) {
         cap *= 2;
     }
 

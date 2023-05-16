@@ -18,7 +18,7 @@ void * list_update(void * ptr, va_list ap)
         index = list->len - 1;
     }
 
-    destroy(&(list->data[index]));
+    destroy(list->data[index]);
 
     list->data[index] = data;
 

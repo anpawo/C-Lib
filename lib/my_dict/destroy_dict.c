@@ -8,24 +8,15 @@
 #include "my_dict.h"
 #include "my_utils.h"
 
-void destroy_item(item_t * item)
+void destroy_dict(dict_t * dict)
 {
-    destroy(&(item->key));
-    destroy(&(item->data));
-    free(item);
-}
-
-void destroy_dict(void * ptr)
-{
-    dict_t * dict = ptr;
-
     if (dict == NULL) {
         return;
     }
 
-    for (size_t i = 0; i < dict->len; i++) {
-        destroy_item(dict->item[i]);
+    for (size_t i = 0; i < dict->cap; i++) {
+        destroy(dict->buck[i]);
     }
 
-    free(ptr - sizeof(int));
+    free((int *) dict - 1);
 }

@@ -7,19 +7,16 @@
 
 #include "my_list.h"
 #include "my_utils.h"
-#include "stdio.h"
 
-void destroy_list(void * ptr)
+void destroy_list(list_t * list)
 {
-    list_t * list = ptr;
-
     if (list == NULL) {
         return;
     }
 
     for (size_t i = 0; i < list->len; i++) {
-        destroy(&(list->data[i]));
+        destroy(list->data[i]);
     }
 
-    try_free(ptr - sizeof(int));
+    try_free((int *) list - 1);
 }

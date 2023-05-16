@@ -7,9 +7,9 @@
 
 #include "my_object.h"
 
-void destroy_vec(void * ptr);
-void destroy_list(void * ptr);
-void destroy_dict(void * ptr);
+void destroy_vec(vec_t * vec);
+void destroy_list(list_t * list);
+void destroy_dict(dict_t * dict);
 
 static const void * DESTROY_OBJ[] = {
     &destroy_vec,
@@ -17,11 +17,23 @@ static const void * DESTROY_OBJ[] = {
     &destroy_dict,
 };
 
-void destroy(void * ptr)
+void destroy(void * obj)
+{
+    int type = 0;
+    void (* destroy_obj)(void *) = NULL;
+
+    if (obj == NULL) {
+        return;
+    }
+
+    type = get_obj_type(obj);
+    destroy_obj = DESTROY_OBJ[type];
+    destroy_obj(obj);
+}
+
+void auto_free(void * ptr)
 {
     void * obj = * (void **) ptr;
-    int type = get_obj_type(obj);
-    void * (* destroy_obj)(void *) = DESTROY_OBJ[type];
 
-    destroy_obj(obj);
+    destroy(obj);
 }

@@ -13,6 +13,8 @@
 
     #include "my_def.h"
 
+//TODO: change description
+
 /**
  * @brief create an object. an object is determined by it's type. every
  * object has some unique fonction made for it.
@@ -22,7 +24,7 @@
  * @param str: [data]
  * @param vect: [data size, len]
  * @param list: [len]
- * @param dict: [len]
+ * @param dict: [nb buckets]
  *
  * @return a new object
 */
@@ -86,9 +88,32 @@ void * delete(void * ptr, ...);
 /**
  * @brief destroy an object. used to free the object depending on his type.
  *
- * @param ptr & oject ptr
+ * @param obj oject ptr
 */
-void destroy(void * ptr);
+void destroy(void * obj);
+
+/**
+ * @brief linked to the macro AUTOFREE. call destroy on (* ptr) (any obj).
+ *
+ * @param ptr ptr to the object to free
+*/
+void auto_free(void * ptr);
+
+/**
+ * @brief duplicate an object.
+ *
+ * @param obj object to duplicate
+ *
+ * @return a copy of obj
+*/
+void * dup_obj(void * obj);
+
+/**
+ * @brief convert an object to a string.
+ *
+ * @param obj obj to convert
+*/
+str_t * string(void * obj, str_t ** buff);
 
 /**
  * @brief set the type of an object

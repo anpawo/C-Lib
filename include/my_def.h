@@ -14,12 +14,12 @@
 
     #define TOSTR(c) ((char[]){c, '\0'})
 
-    #define AUTOFREE __attribute__((cleanup(destroy)))
+    #define AUTOFREE __attribute__((cleanup(auto_free)))
 
-    #define STR(s) create(STR, s)
-    #define VEC(t, n) create(VEC, t, n)
-    #define LIST(n) create(LIST, n)
-    #define DICT(n) create(DICT, n)
+    #define STR(s)      create(STR, s)
+    #define VEC(t, n)   create(VEC, t, n)
+    #define LIST(n)     create(LIST, n)
+    #define DICT(n)     create(DICT, n)
 
     #define ABS(x) (((x) < 0) ? -(x) : (x))
 
@@ -57,18 +57,17 @@ VEC_DEF(double, double)
 typedef struct list_s {
     size_t len;
     size_t cap;
-    str_t * data[0];
+    void * data[0];
 } list_t;
 
 typedef struct item_s {
     str_t * key;
-    str_t * data;
+    void * data;
 } item_t;
 
 typedef struct dict_s {
-    size_t len;
     size_t cap;
-    item_t * item[0];
+    list_t * buck[0];
 } dict_t;
 
 #endif /* MY_DEF */

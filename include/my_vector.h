@@ -10,47 +10,20 @@
 
     #include "my_object.h"
 
+void * create_vec(va_list ap);
 void * resize_vec(void * ptr, size_t len);
-void destroy_vec(void * ptr);
+void * vec_duplic(void * obj);
 
-/**
- * @brief add some data at the end of a vector
- *
- * @param ptr ptr to the target vector
- * @param ap: [data]
- *
- * @return target vector
-*/
+void * create_str(va_list ap);
+void * create_nstr(va_list ap);
+
 void * vec_append(void * ptr, va_list ap);
-
-/**
- * @brief insert some data in a vector
- *
- * @param ptr ptr to the target vector
- * @param ap: [index, data]
- *
- * @return target vector
-*/
 void * vec_insert(void * ptr, va_list ap);
-
-/**
- * @brief delete some data of a vector
- *
- * @param ptr ptr to the target vector
- * @param ap: [index]
- *
- * @return target vector
-*/
 void * vec_delete(void * ptr, va_list ap);
-
-/**
- * @brief update some data in a vector
- *
- * @param ptr ptr to the target vector
- * @param ap: [index, data]
- *
- * @return target vector
-*/
 void * vec_update(void * ptr, va_list ap);
+
+void destroy_vec(vec_t * vec);
+
+str_t * vec_to_str(vec_t * vec, str_t ** buff);
 
 #endif /* MY_VEC */

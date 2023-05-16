@@ -7,33 +7,25 @@
 
 #include "my_dict.h"
 #include "my_utils.h"
-#include <stdio.h>
-
-static void * update_value(dict_t * dict, size_t index, void * data)
-{
-    destroy(&(dict->item[index]->data));
-    dict->item[index]->data = data;
-
-    return dict;
-}
 
 void * dict_append(void * ptr, va_list ap)
 {
     dict_t * dict = * (void **) ptr;
     char * key = va_arg(ap, char *);
     void * data = va_arg(ap, void *);
+    size_t h = hash_key(key) % dict->cap;
     size_t index = 0;
 
-    if (in_dict(dict, key, &index)) {
-        return update_value(dict, index, data);
+    if (dict->buck[h] == NULL) {
+        dict->buck[h] = create(LIST, 2);
     }
 
-    if (dict->len == dict->cap) {
-        dict = resize_dict(ptr, dict->cap + 1);
+    if (key_in_bucket(dict->buck[h], key, &index)) {
+        update(&(dict->buck[h]), index + 1, data);
+    } else {
+        append(&(dict->buck[h]), key);
+        append(&(dict->buck[h]), data);
     }
-
-    dict->item[dict->len] = create_item(key, data);
-    dict->len += 1;
 
     return dict;
 }

@@ -8,7 +8,7 @@
 #include "my_dict.h"
 #include "my_utils.h"
 
-static void * insert_at_end(void * ptr, ...)
+static void * convert_to_append(void * ptr, ...)
 {
     dict_t * dict = NULL;
     va_list ap;
@@ -22,16 +22,8 @@ static void * insert_at_end(void * ptr, ...)
 
 void * dict_update(void * ptr, va_list ap)
 {
-    dict_t * dict = ptr;
     char * key = va_arg(ap, char *);
     void * data = va_arg(ap, void *);
-    size_t index = 0;
 
-    if (in_dict(dict, key, &index)) {
-        destroy(&(dict->item[index]->data));
-        dict->item[index]->data = data;
-        return dict;
-    }
-
-    return insert_at_end(ptr, key, data);
+    return convert_to_append(ptr, key, data);
 }

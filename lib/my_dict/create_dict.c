@@ -10,22 +10,11 @@
 
 void * create_dict(va_list ap)
 {
-    size_t len = va_arg(ap, size_t);
-    size_t cap = pad_len(len);
-    dict_t * dict = alloc_obj(DICT, sizeof(dict_t) + cap * sizeof(void *));
+    size_t cap = va_arg(ap, size_t);
+    dict_t * dict = alloc_obj(DICT, sizeof(dict_t) + cap * sizeof(list_t *));
 
-    dict->len = 0;
     dict->cap = cap;
+    mem_set(dict->buck, 0, cap * sizeof(list_t *));
 
     return dict;
-}
-
-item_t * create_item(char * key, void * data)
-{
-    item_t * item = malloc(sizeof(item_t));
-
-    item->key = STR(key);
-    item->data = data;
-
-    return item;
 }

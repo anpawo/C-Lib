@@ -19,14 +19,14 @@ void add_str(str_t ** str, va_list ap)
 
 void add_int(str_t ** str, va_list ap)
 {
-    AUTOFREE str_t * tmp = STR(itoa(va_arg(ap, int)));
+    AUTOFREE str_t * tmp = STR(my_itoa(va_arg(ap, int)));
 
     append(str, tmp->data);
 }
 
 void add_flt(str_t ** str, va_list ap)
 {
-    AUTOFREE str_t * tmp = STR(ftoa(va_arg(ap, double)));
+    AUTOFREE str_t * tmp = STR(my_ftoa(va_arg(ap, double), 6));
 
     append(str, tmp->data);
 }

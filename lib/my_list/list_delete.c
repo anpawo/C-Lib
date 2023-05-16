@@ -17,7 +17,7 @@ void * list_delete(void * ptr, va_list ap)
         index = list->len - 1;
     }
 
-    destroy(&(list->data[index]));
+    destroy(list->data[index]);
 
     if (index < list->len - 1) {
         mem_cpy(

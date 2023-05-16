@@ -10,12 +10,11 @@
 
     #include "my_lib.h"
 
-size_t print(const char * str, ...);
+typedef struct formater_s {
+    char type;
+    void (* add) (str_t **, va_list);
+} formater_t;
 
-static void add_chr(str_t ** str, va_list ap);
-static void add_str(str_t ** str, va_list ap);
-static void add_int(str_t ** str, va_list ap);
-static void add_flt(str_t ** str, va_list ap);
-static void add_obj(str_t ** str, va_list ap);
+size_t print(const char * str, ...);
 
 #endif /* MY_PRINT */

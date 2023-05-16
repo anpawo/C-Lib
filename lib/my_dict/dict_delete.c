@@ -12,21 +12,13 @@ void * dict_delete(void * ptr, va_list ap)
 {
     dict_t * dict = * (void **) ptr;
     char * key = va_arg(ap, char *);
+    size_t h = hash_key(key) % dict->cap;
     size_t index = 0;
 
-    if (in_dict(dict, key, &index)) {
-        destroy_item(dict->item[index]);
+    if (key_in_bucket(dict->buck[h], key, &index)) {
+        delete(&(dict->buck[h]), index);
+        delete(&(dict->buck[h]), index);
     }
-
-    if (index < dict->len - 1) {
-        mem_cpy(
-            dict->item + index,
-            dict->item + index + 1,
-            (dict->len - index - 1) * sizeof(void *)
-        );
-    }
-
-    dict->len -= 1;
 
     return dict;
 }

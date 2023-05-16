@@ -8,29 +8,32 @@
 #include "my_lib.h"
 #include <unistd.h>
 
-char ** FORMAT = {
-    "c", &add_chr,
-    "s", &add_str,
-    "d", &add_int,
-    "f", &add_flt,
-    "o", &add_obj,
+void add_chr(str_t ** str, va_list ap);
+void add_str(str_t ** str, va_list ap);
+void add_int(str_t ** str, va_list ap);
+void add_flt(str_t ** str, va_list ap);
+void add_obj(str_t ** str, va_list ap);
+
+static const formater_t FORMAT[] = {
+    { 'c', &add_chr },
+    { 's', &add_str },
+    { 'd', &add_int },
+    { 'f', &add_flt },
+    { 'o', &add_obj },
 };
 
 static void add_element(str_t ** str, va_list ap, char type)
 {
-    int index = 0;
-    void (* add) (str_t **, va_list);
+    int i = 0;
 
     if (type == '%') {
         append(str, TOSTR(va_arg(ap, int))); // maybe need to cast char
         return;
     }
 
-    for (; *(FORMAT[index]) != type; index += 2);
+    for (; FORMAT[i].type != type; i++);
 
-    add = FORMAT[index + 1];
-
-    add(str, ap);
+    FORMAT[i].add(str, ap);
 }
 
 static void parse_format(const char * format, str_t ** str, va_list ap)
@@ -51,7 +54,7 @@ size_t print(const char * format, ...)
     AUTOFREE str_t * str = STR("");
     va_list ap;
 
-    va_start(ap, str);
+    va_start(ap, format);
     parse_format(format, &str, ap);
     va_end(ap);
 
