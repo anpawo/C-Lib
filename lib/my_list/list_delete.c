@@ -8,9 +8,8 @@
 #include "my_list.h"
 #include "my_utils.h"
 
-void * list_delete(void * ptr, va_list ap)
+list_t * list_delete(list_t * list, va_list ap)
 {
-    list_t * list = * (void **) ptr;
     size_t index = va_arg(ap, size_t);
 
     if (index >= list->len) {
@@ -26,7 +25,6 @@ void * list_delete(void * ptr, va_list ap)
             (list->len - index - 1) * sizeof(void *)
         );
     }
-
     list->len -= 1;
 
     return list;

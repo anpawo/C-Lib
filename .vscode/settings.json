@@ -41,6 +41,12 @@
         "my_dict.h": "c",
         "my_print.h": "c",
         "unistd.h": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "atomic": "c",
+        "concepts": "c",
+        "istream": "c",
+        "new": "c",
+        "numeric": "c",
+        "system_error": "c"
     }
 }

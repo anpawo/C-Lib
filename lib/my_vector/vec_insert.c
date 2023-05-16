@@ -8,9 +8,9 @@
 #include "my_vector.h"
 #include "my_utils.h"
 
-static void * string_insert(void * ptr, char * data, size_t index)
+static void * string_insert(void ** ptr, char * data, size_t index)
 {
-    str_t * str = * (void **) ptr;
+    str_t * str = * ptr;
     size_t len_data = str_len(data);
 
     if (str->len + len_data + 1 > str->cap) {
@@ -32,9 +32,9 @@ static void * string_insert(void * ptr, char * data, size_t index)
     return str;
 }
 
-static void * vector_insert(void * ptr, void * data, size_t index)
+static void * vector_insert(void ** ptr, void * data, size_t index)
 {
-    vec_t * vec = * (void **) ptr;
+    vec_t * vec = * ptr;
     size_t n = 0;
 
     if (vec->len == vec->cap) {
@@ -56,9 +56,9 @@ static void * vector_insert(void * ptr, void * data, size_t index)
     return vec;
 }
 
-void * vec_insert(void * ptr, va_list ap)
+void * vec_insert(void ** ptr, va_list ap)
 {
-    vec_t * vec = * (void **) ptr;
+    vec_t * vec = * ptr;
     size_t index = va_arg(ap, size_t);
     void * data = va_arg(ap, void *);
     size_t size_data = vec->size_data;

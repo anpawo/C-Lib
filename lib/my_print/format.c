@@ -33,8 +33,5 @@ void add_flt(str_t ** str, va_list ap)
 
 void add_obj(str_t ** str, va_list ap)
 {
-    void * obj = va_arg(ap, void *);
-    AUTOFREE str_t * tmp = string(obj);
-
-    append(str, tmp->data);
+    string(va_arg(ap, void *), str);
 }

@@ -10,14 +10,14 @@
 
     #include "my_object.h"
 
-void * create_list(va_list ap);
-void * resize_list(void * ptr, size_t len);
-void * list_duplic(void * obj);
+list_t * create_list(va_list ap);
+list_t * resize_list(list_t ** ptr, size_t len);
+list_t * list_duplic(list_t * list);
 
-void * list_append(void * ptr, va_list ap);
-void * list_insert(void * ptr, va_list ap);
-void * list_delete(void * ptr, va_list ap);
-void * list_update(void * ptr, va_list ap);
+list_t * list_append(list_t ** ptr, va_list ap);
+list_t * list_insert(list_t ** ptr, va_list ap);
+list_t * list_delete(list_t * list, va_list ap);
+list_t * list_update(list_t * list, va_list ap);
 
 void destroy_list(list_t * list);
 

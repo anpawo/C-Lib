@@ -8,19 +8,20 @@
 #include "my_dict.h"
 #include "my_utils.h"
 
-size_t hash_key(const char * str)
+size_t hash_key(const char * key)
 {
-    size_t key = 0;
+    size_t hash = 0;
 
-    while (*str) {
-        key += *str;
-        str++;
+    while (*key) {
+        hash += *key;
+        key++;
     }
 
-    return key;
+    return hash;
 }
 
 // should call compare instead of strcmp (maybe ?)
+
 int key_in_bucket(const list_t * bucket, const char * key, size_t * buff)
 {
     if (bucket->len == 0) {
@@ -28,7 +29,7 @@ int key_in_bucket(const list_t * bucket, const char * key, size_t * buff)
     }
 
     for (size_t i = 0; i < bucket->len; i += 2) {
-        if (str_cmp(((str_t *) bucket->data)->data, key) != 0) {
+        if (str_cmp(((str_t *) bucket->data[i])->data, key) != 0) {
             continue;
         }
         if (buff != NULL) {

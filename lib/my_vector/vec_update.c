@@ -8,9 +8,8 @@
 #include "my_vector.h"
 #include "my_utils.h"
 
-void * vec_update(void * ptr, va_list ap)
+void * vec_update(vec_t * vec, va_list ap)
 {
-    vec_t * vec = ptr;
     size_t index = va_arg(ap, size_t);
     void * data = va_arg(ap, void *);
 

@@ -8,7 +8,7 @@
 #include "my_dict.h"
 #include "my_utils.h"
 
-static void * convert_to_append(void * ptr, ...)
+static dict_t * convert_to_append(dict_t ** ptr, ...)
 {
     dict_t * dict = NULL;
     va_list ap;
@@ -20,7 +20,7 @@ static void * convert_to_append(void * ptr, ...)
     return dict;
 }
 
-void * dict_insert(void * ptr, va_list ap)
+dict_t * dict_insert(dict_t ** ptr, va_list ap)
 {
     char * key = va_arg(ap, char *);
     void * data = va_arg(ap, void *);

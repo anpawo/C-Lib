@@ -8,9 +8,8 @@
 #include "my_list.h"
 #include "my_utils.h"
 
-void * list_update(void * ptr, va_list ap)
+list_t * list_update(list_t * list, va_list ap)
 {
-    list_t * list = ptr;
     size_t index = va_arg(ap, size_t);
     void * data = va_arg(ap, void *);
 

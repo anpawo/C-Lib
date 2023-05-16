@@ -8,16 +8,15 @@
 #include "my_dict.h"
 #include "my_utils.h"
 
-void * dict_delete(void * ptr, va_list ap)
+dict_t * dict_delete(dict_t * dict, va_list ap)
 {
-    dict_t * dict = * (void **) ptr;
     char * key = va_arg(ap, char *);
-    size_t h = hash_key(key) % dict->cap;
+    size_t hash = hash_key(key) % dict->cap;
     size_t index = 0;
 
-    if (key_in_bucket(dict->buck[h], key, &index)) {
-        delete(&(dict->buck[h]), index);
-        delete(&(dict->buck[h]), index);
+    if (key_in_bucket(dict->buck[hash], key, &index)) {
+        delete(dict->buck[hash], index);
+        delete(dict->buck[hash], index);
     }
 
     return dict;

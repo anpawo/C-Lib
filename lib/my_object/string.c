@@ -21,7 +21,7 @@ static const void * CONVERT_TO_STR[] = {
 str_t * string(void * obj, str_t ** buff)
 {
     int type = get_obj_type(obj);
-    str_t * (* convert_to_str)(void * obj, str_t **) = CONVERT_TO_STR[type];
+    str_t * (* convert_to_str)(void *, str_t **) = CONVERT_TO_STR[type];
     str_t * str = convert_to_str(obj, buff);
 
     return str;

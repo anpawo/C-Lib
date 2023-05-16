@@ -8,16 +8,15 @@
 #include "my_list.h"
 #include "my_utils.h"
 
-// maybe create with old.len + 1
-void * list_duplic(void * obj)
+// maybe create with list.len + 1
+list_t * list_duplic(list_t * list)
 {
-    list_t * old = obj;
-    list_t * new = create(LIST, old->len);
+    list_t * new = create(LIST, list->cap);
 
-    for (size_t i = 0; i < old->len; i++) {
-        new->data[i] = dup_obj(old->data[i]);
+    for (size_t i = 0; i < list->len; i++) {
+        new->data[i] = dup_obj(list->data[i]);
     }
-    new->len = old->len;
+    new->len = list->len;
 
     return new;
 }

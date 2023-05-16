@@ -24,7 +24,7 @@ str_t * list_to_str(list_t * list, str_t ** buff)
         string(list->data[i], &str);
         append(&str, ", ");
     }
-    if (str->data[str->len - 1] != '[') {
+    if (str->data[str->len - 1] == ' ') {
         str->len -= 2;
     }
     append(&str, "]");

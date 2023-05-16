@@ -18,5 +18,5 @@ void destroy_list(list_t * list)
         destroy(list->data[i]);
     }
 
-    try_free((int *) list - 1);
+    free((int *) list - 1);
 }

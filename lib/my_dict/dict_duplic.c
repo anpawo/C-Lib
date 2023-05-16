@@ -8,16 +8,15 @@
 #include "my_dict.h"
 #include "my_utils.h"
 
-void * dict_duplic(void * obj)
+dict_t * dict_duplic(dict_t * dict)
 {
-    dict_t * old = obj;
-    dict_t * new = create(DICT, old->cap);
+    dict_t * new = create(DICT, dict->cap);
 
-    for (size_t i = 0; i < old->cap; i++) {
-        if (old->buck[i] == NULL) {
+    for (size_t i = 0; i < dict->cap; i++) {
+        if (dict->buck[i] == NULL) {
             continue;
         }
-        new->buck[i] = dup_obj(old->buck[i]);
+        new->buck[i] = dup_obj(dict->buck[i]);
     }
 
     return new;

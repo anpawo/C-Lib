@@ -8,7 +8,7 @@
 #include "my_dict.h"
 #include "my_utils.h"
 
-void * create_dict(va_list ap)
+dict_t * create_dict(va_list ap)
 {
     size_t cap = va_arg(ap, size_t);
     dict_t * dict = alloc_obj(DICT, sizeof(dict_t) + cap * sizeof(list_t *));

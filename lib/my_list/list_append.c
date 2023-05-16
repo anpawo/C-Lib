@@ -8,7 +8,7 @@
 #include "my_list.h"
 #include "my_utils.h"
 
-static void * insert_at_end(void * ptr, ...)
+static list_t * insert_at_end(list_t ** ptr, ...)
 {
     list_t * list = NULL;
     va_list ap;
@@ -20,9 +20,9 @@ static void * insert_at_end(void * ptr, ...)
     return list;
 }
 
-void * list_append(void * ptr, va_list ap)
+list_t * list_append(list_t ** ptr, va_list ap)
 {
-    list_t * list = * (void **) ptr;
+    list_t * list = * ptr;
     size_t index = list->len;
     void * data = va_arg(ap, void *);
 

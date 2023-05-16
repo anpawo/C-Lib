@@ -8,7 +8,8 @@
 #include "my_dict.h"
 #include "my_utils.h"
 
-// do not destroy tmp every time because it can be used again
+// TODO: split in two functions
+
 str_t * dict_to_str(dict_t * dict, str_t ** buff)
 {
     str_t * str = NULL;
@@ -24,14 +25,14 @@ str_t * dict_to_str(dict_t * dict, str_t ** buff)
         if (dict->buck[i] == NULL) {
             continue;
         }
-        for (size_t n = 0; n < dict->buck[i]->len; i += 2) {
+        for (size_t n = 0; n < dict->buck[i]->len; n += 2) {
             string(dict->buck[i]->data[n], &str);
             append(&str, ": ");
             string(dict->buck[i]->data[n + 1], &str);
             append(&str, ", ");
         }
     }
-    if (str->data[str->len - 1] != '{') {
+    if (str->data[str->len - 1] == ' ') {
         str->len -= 2;
     }
     append(&str, "}");

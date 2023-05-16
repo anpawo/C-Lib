@@ -7,9 +7,9 @@
 
 #include "my_object.h"
 
-void * vec_insert(void * ptr, va_list ap);
-void * list_insert(void * ptr, va_list ap);
-void * dict_insert(void * ptr, va_list ap);
+void * vec_insert(void ** ptr, va_list ap);
+list_t * list_insert(list_t ** ptr, va_list ap);
+dict_t * dict_insert(dict_t ** ptr, va_list ap);
 
 static const void * INSERT_DATA[] = {
     &vec_insert,
@@ -19,9 +19,9 @@ static const void * INSERT_DATA[] = {
 
 void * insert(void * ptr, ...)
 {
-    void * obj = * (void **) ptr;
+    void * obj = * (void ** )ptr;
     int type = get_obj_type(obj);
-    void * (* insert_data)(void *, va_list) = INSERT_DATA[type];
+    void * (* insert_data)(void **, va_list) = INSERT_DATA[type];
     va_list ap;
 
     va_start(ap, ptr);

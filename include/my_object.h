@@ -13,89 +13,83 @@
 
     #include "my_def.h"
 
-//TODO: change description
-
 /**
- * @brief create an object. an object is determined by it's type. every
- * object has some unique fonction made for it.
+ * @brief create an object. every object has a different type.
  *
- * @param type type of the object [STR, VEC, LIST, DICT]
- * @param -
- * @param str: [data]
- * @param vect: [data size, len]
- * @param list: [len]
- * @param dict: [nb buckets]
+ * @param type [ STR , VEC , LIST , DICT ]
+ *
+ * @param STR  [data]
+ * @param VECT [data size, len]
+ * @param LIST [len]
+ * @param DICT [nb buckets]
  *
  * @return a new object
 */
 void * create(int type, ...);
 
 /**
- * @brief append a certain type of data to an object. the data depends of the
- * object.
+ * @brief append some data to an object. the data depends on the object.
  *
- * @param ptr & object pointer
+ * @param ptr object pointer
  *
- * @param vect: [data]
- * @param list: [data]
- * @param dict: [key, value]
+ * @param VECT [data]
+ * @param LIST [data]
+ * @param DICT [key, value]
  *
- * @return the target object
+ * @return the object
 */
 void * append(void * ptr, ...);
 
 /**
- * @brief insert some data to an object. the data depends of the
- * object.
+ * @brief insert some data to an object. the data depends on the object.
  *
- * @param ptr & object pointer
+ * @param ptr object pointer
  *
- * @param vect: [index, data]
- * @param list: [index, data]
- * @param dict: [key, value]
+ * @param VECT [index, data]
+ * @param LIST [index, data]
+ * @param DICT [key, value]
  *
- * @return the target object
+ * @return the object
 */
 void * insert(void * ptr, ...);
 
 /**
- * @brief update the data to an object. the data depends of the
- * object.
+ * @brief update some data of an object.
  *
- * @param ptr & object pointer
+ * @param obj object
  *
- * @param vect: [index, data]
- * @param list: [index, data]
- * @param dict: [key, value]
+ * @param VECT [index, data]
+ * @param LIST [index, data]
+ * @param DICT [key, value]
  *
- * @return the target object
+ * @return the object
 */
 void * update(void * ptr, ...);
 
 /**
- * @brief delete a certain part of an object.
+ * @brief delete some data of an object.
  *
- * @param ptr & object pointer
+ * @param ptr object
  *
- * @param obj vect: [index]
- * @param obj list: [index]
- * @param obj dict: [key]
+ * @param obj VECT [index]
+ * @param obj LIST [index]
+ * @param obj DICT [key]
  *
- * @return the target object
+ * @return the object
 */
-void * delete(void * ptr, ...);
+void * delete(void * obj, ...);
 
 /**
- * @brief destroy an object. used to free the object depending on his type.
+ * @brief free an object according to it's type.
  *
- * @param obj oject ptr
+ * @param obj oject
 */
 void destroy(void * obj);
 
 /**
- * @brief linked to the macro AUTOFREE. call destroy on (* ptr) (any obj).
+ * @brief linked to the macro AUTOFREE.
  *
- * @param ptr ptr to the object to free
+ * @param ptr object pointer
 */
 void auto_free(void * ptr);
 

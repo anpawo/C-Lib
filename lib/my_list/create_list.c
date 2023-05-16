@@ -8,7 +8,7 @@
 #include "my_list.h"
 #include "my_utils.h"
 
-void * create_list(va_list ap)
+list_t * create_list(va_list ap)
 {
     size_t len = va_arg(ap, size_t);
     size_t cap = pad_len(len);

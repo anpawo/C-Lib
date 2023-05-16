@@ -10,20 +10,39 @@
 
     #include "my_object.h"
 
-void * create_dict(va_list ap);
+dict_t * create_dict(va_list ap);
+dict_t * dict_duplic(dict_t * dict);
 
-void * dict_append(void * ptr, va_list ap);
-void * dict_insert(void * ptr, va_list ap);
-void * dict_delete(void * ptr, va_list ap);
-void * dict_update(void * ptr, va_list ap);
-void * dict_duplic(void * obj);
+dict_t * dict_append(dict_t ** ptr, va_list ap);
+dict_t * dict_insert(dict_t ** ptr, va_list ap);
+dict_t * dict_delete(dict_t * dict, va_list ap);
+dict_t * dict_update(dict_t * dict, va_list ap);
 
 void destroy_dict(dict_t * dict);
 
 str_t * dict_to_str(dict_t * dict, str_t ** buff);
 
-size_t hash_key(const char * str);
+/* special method */
 
+/**
+ * @brief hash a key
+ *
+ * @param key key to hash
+ *
+ * @return the hashed key
+*/
+size_t hash_key(const char * key);
+
+/**
+ * @brief check if a bucket contain a key.
+ * put the index in buff if possible.
+ *
+ * @param bucket list to check
+ * @param key key to check
+ * @param buff buffer for the index found
+ *
+ * @param int 1 or 0
+*/
 int key_in_bucket(const list_t * bucket, const char * key, size_t * buff);
 
 // int in_dict(dict_t * dict, char * key, size_t * buff);

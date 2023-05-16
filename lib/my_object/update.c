@@ -7,9 +7,9 @@
 
 #include "my_object.h"
 
-void * vec_update(void * ptr, va_list ap);
-void * list_update(void * ptr, va_list ap);
-void * dict_update(void * ptr, va_list ap);
+void * vec_update(vec_t * vec, va_list ap);
+list_t * list_update(list_t * ptr, va_list ap);
+dict_t * dict_update(dict_t * ptr, va_list ap);
 
 static const void * UPDATE_DATA[] = {
     &vec_update,
@@ -17,14 +17,13 @@ static const void * UPDATE_DATA[] = {
     &dict_update,
 };
 
-void * update(void * ptr, ...)
+void * update(void * obj, ...)
 {
-    void * obj = * (void **) ptr;
     int type = get_obj_type(obj);
     void * (* update_data)(void *, va_list) = UPDATE_DATA[type];
     va_list ap;
 
-    va_start(ap, ptr);
+    va_start(ap, obj);
     obj = update_data(obj, ap);
     va_end(ap);
 

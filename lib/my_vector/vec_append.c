@@ -8,7 +8,7 @@
 #include "my_vector.h"
 #include "my_utils.h"
 
-static void * vector_append(void * ptr, ...)
+static void * vector_append(void ** ptr, ...)
 {
     vec_t * vec = NULL;
     va_list ap;
@@ -20,9 +20,9 @@ static void * vector_append(void * ptr, ...)
     return vec;
 }
 
-void * vec_append(void * ptr, va_list ap)
+void * vec_append(void ** ptr, va_list ap)
 {
-    vec_t * vec = * (void **) ptr;
+    vec_t * vec = * ptr;
     size_t index = vec->len;
     void * data = va_arg(ap, void *);
 

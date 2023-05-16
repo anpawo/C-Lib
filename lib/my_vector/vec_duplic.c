@@ -9,15 +9,14 @@
 #include "my_utils.h"
 
 // maybe create with old.len + 1
-void * vec_duplic(void * obj)
+void * vec_duplic(vec_t * vec)
 {
-    vec_t * old = obj;
-    vec_t * new = create(VEC, old->size_data, old->len);
+    vec_t * new = create(VEC, vec->size_data, vec->cap);
 
-    mem_cpy(new->data, old->data, old->len * old->size_data);
-    new->len = old->len;
+    mem_cpy(new->data, vec->data, vec->len * vec->size_data);
+    new->len = vec->len;
 
-    if (old->size_data == sizeof(char)) {
+    if (vec->size_data == sizeof(char)) {
         new->data[new->len] = '\0';
     }
 
