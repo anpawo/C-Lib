@@ -17,7 +17,6 @@ static const void * DUP_OBJ[] = {
     &dict_duplic,
 };
 
-// TODO: ap argument detail
 void * dup_obj(void * obj)
 {
     int type = get_obj_type(obj);

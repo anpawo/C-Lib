@@ -21,7 +21,6 @@ size_t hash_key(const char * key)
 }
 
 // should call compare instead of strcmp (maybe ?)
-
 int key_in_bucket(const list_t * bucket, const char * key, size_t * buff)
 {
     if (bucket->len == 0) {

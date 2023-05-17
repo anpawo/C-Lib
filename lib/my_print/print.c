@@ -22,12 +22,16 @@ static const formater_t FORMAT[] = {
     { 'o', &add_obj },
 };
 
+// this only work because of little endian encoding.
+// since the append function will consider the int as an array of char
+// since the first byte is the value and the second is a 0 ('\0').
+// this works
 static void add_element(str_t ** str, va_list ap, char type)
 {
     int i = 0;
 
     if (type == '%') {
-        append(str, TOSTR(va_arg(ap, int))); // maybe need to cast char
+        append(str, TOSTR(va_arg(ap, int)));
         return;
     }
 

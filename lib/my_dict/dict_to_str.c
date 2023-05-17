@@ -8,7 +8,15 @@
 #include "my_dict.h"
 #include "my_utils.h"
 
-// TODO: split in two functions
+static void append_bucket(list_t * bucket, str_t ** str)
+{
+    for (size_t n = 0; n < bucket->len; n += 2) {
+        string(bucket->data[n], str);
+        append(str, ": ");
+        string(bucket->data[n + 1], str);
+        append(str, ", ");
+    }
+}
 
 str_t * dict_to_str(dict_t * dict, str_t ** buff)
 {
@@ -20,26 +28,16 @@ str_t * dict_to_str(dict_t * dict, str_t ** buff)
         str = *buff;
         append(&str, "{");
     }
-
     for (size_t i = 0; i < dict->cap; i++) {
-        if (dict->buck[i] == NULL) {
+        if (dict->buck[i] == NULL)
             continue;
-        }
-        for (size_t n = 0; n < dict->buck[i]->len; n += 2) {
-            string(dict->buck[i]->data[n], &str);
-            append(&str, ": ");
-            string(dict->buck[i]->data[n + 1], &str);
-            append(&str, ", ");
-        }
+        append_bucket(dict->buck[i], &str);
     }
-    if (str->data[str->len - 1] == ' ') {
+    if (str->data[str->len - 1] == ' ')
         str->len -= 2;
-    }
     append(&str, "}");
 
-    if (buff != NULL) {
+    if (buff != NULL)
         *buff = str;
-    }
-
     return str;
 }

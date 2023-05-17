@@ -17,7 +17,6 @@ static const void * CONVERT_TO_STR[] = {
     &dict_to_str,
 };
 
-// TODO: ap argument detail
 str_t * string(void * obj, str_t ** buff)
 {
     int type = get_obj_type(obj);
