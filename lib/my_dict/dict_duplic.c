@@ -5,8 +5,7 @@
 ** create a str_t (string)
 */
 
-#include "my_dict.h"
-#include "my_utils.h"
+#include "my_object.h"
 
 dict_t * dict_duplic(dict_t * dict)
 {
@@ -16,7 +15,7 @@ dict_t * dict_duplic(dict_t * dict)
         if (dict->buck[i] == NULL) {
             continue;
         }
-        new->buck[i] = dup_obj(dict->buck[i]);
+        new->buck[i] = duplic(dict->buck[i]);
     }
 
     return new;

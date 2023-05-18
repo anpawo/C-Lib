@@ -11,7 +11,17 @@
     #include <stdlib.h>
     #include <stdarg.h>
 
-    #include "my_def.h"
+    #include "my_string.h"
+    #include "my_vector.h"
+    #include "my_list.h"
+    #include "my_dict.h"
+
+enum OBJECT {
+    STR,
+    VEC,
+    LIST,
+    DICT,
+};
 
 /**
  * @brief create an object. every object has a different type.
@@ -100,7 +110,7 @@ void auto_free(void * ptr);
  *
  * @return a copy of obj
 */
-void * dup_obj(void * obj);
+void * duplic(void * obj);
 
 /**
  * @brief convert an object to a string.

@@ -5,19 +5,16 @@
 ** create a str_t (string)
 */
 
-#include "my_list.h"
-#include "my_utils.h"
+#include "my_object.h"
 
-// should be string(list.data[i])
-
-str_t * list_to_str(list_t * list, str_t ** buff)
+str_t * list_to_string(list_t * list, str_t ** buff)
 {
     str_t * str = NULL;
 
     if (buff == NULL) {
-        str = STR("[");
+        str = create(STR, "[");
     } else {
-        str = *buff;
+        str = * buff;
         append(&str, "[");
     }
     for (size_t i = 0; i < list->len; i++) {
@@ -29,7 +26,7 @@ str_t * list_to_str(list_t * list, str_t ** buff)
     }
     append(&str, "]");
     if (buff != NULL) {
-        *buff = str;
+        * buff = str;
     }
     return str;
 }

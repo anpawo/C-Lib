@@ -5,8 +5,10 @@
 ** utils
 */
 
+#include <stdlib.h>
+
 #include "my_utils.h"
-#include "stdlib.h"
+#include "my_def.h"
 
 char * my_itoa(long int nbr)
 {

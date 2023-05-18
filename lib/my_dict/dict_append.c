@@ -5,8 +5,7 @@
 ** create a str_t (string)
 */
 
-#include "my_dict.h"
-#include "my_utils.h"
+#include "my_object.h"
 
 dict_t * dict_append(dict_t ** ptr, va_list ap)
 {
@@ -17,14 +16,14 @@ dict_t * dict_append(dict_t ** ptr, va_list ap)
     size_t index = 0;
 
     if (dict->buck[hash] == NULL) {
-        dict->buck[hash] = LIST(2);
+        dict->buck[hash] = create(LIST, 2);
     }
 
     if (key_in_bucket(dict->buck[hash], key, &index)) {
         destroy(dict->buck[hash]->data[index + 1]);
         dict->buck[hash]->data[index + 1] = data;
     } else {
-        append(&(dict->buck[hash]), STR(key));
+        append(&(dict->buck[hash]), create(STR, key));
         append(&(dict->buck[hash]), data);
     }
 

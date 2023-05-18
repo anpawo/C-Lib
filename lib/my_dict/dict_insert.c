@@ -5,8 +5,9 @@
 ** create a str_t (string)
 */
 
-#include "my_dict.h"
-#include "my_utils.h"
+#include "my_object.h"
+
+dict_t * dict_append(dict_t ** ptr, va_list ap);
 
 static dict_t * convert_to_append(dict_t ** ptr, ...)
 {

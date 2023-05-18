@@ -8,21 +8,14 @@
 #ifndef MY_DICT
     #define MY_DICT
 
-    #include "my_object.h"
+    #include <stddef.h>
 
-dict_t * create_dict(va_list ap);
-dict_t * dict_duplic(dict_t * dict);
+    #include "my_list.h"
 
-dict_t * dict_append(dict_t ** ptr, va_list ap);
-dict_t * dict_insert(dict_t ** ptr, va_list ap);
-dict_t * dict_delete(dict_t * dict, va_list ap);
-dict_t * dict_update(dict_t * dict, va_list ap);
-
-void destroy_dict(dict_t * dict);
-
-str_t * dict_to_str(dict_t * dict, str_t ** buff);
-
-/* special method */
+typedef struct dict_s {
+    size_t cap;
+    list_t * buck[0];
+} dict_t;
 
 /**
  * @brief hash a key
@@ -34,10 +27,10 @@ str_t * dict_to_str(dict_t * dict, str_t ** buff);
 size_t hash_key(const char * key);
 
 /**
- * @brief check if a bucket contain a key.
+ * @brief check if a dict bucket contain a key.
  * put the index in buff if possible.
  *
- * @param bucket list to check
+ * @param bucket bucket to check
  * @param key key to check
  * @param buff buffer for the index found
  *

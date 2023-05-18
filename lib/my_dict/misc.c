@@ -6,6 +6,7 @@
 */
 
 #include "my_dict.h"
+#include "my_string.h"
 #include "my_utils.h"
 
 size_t hash_key(const char * key)

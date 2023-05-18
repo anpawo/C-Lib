@@ -8,7 +8,8 @@
 #ifndef MY_PRINT
     #define MY_PRINT
 
-    #include "my_lib.h"
+    #include "my_object.h"
+    #include "my_def.h"
 
 typedef struct formater_s {
     char type;

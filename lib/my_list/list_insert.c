@@ -5,8 +5,10 @@
 ** create a str_t (string)
 */
 
-#include "my_list.h"
+#include "my_object.h"
 #include "my_utils.h"
+
+list_t * list_resize(list_t ** ptr, size_t len);
 
 list_t * list_insert(list_t ** ptr, va_list ap)
 {
@@ -15,7 +17,7 @@ list_t * list_insert(list_t ** ptr, va_list ap)
     void * data = va_arg(ap, void *);
 
     if (list->len == list->cap) {
-        list = resize_list(ptr, list->cap + 1);
+        list = list_resize(ptr, list->cap + 1);
     }
 
     if (index < list->len) {

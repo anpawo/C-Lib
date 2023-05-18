@@ -7,14 +7,16 @@
 
 #include "my_object.h"
 
-void destroy_vec(vec_t * vec);
-void destroy_list(list_t * list);
-void destroy_dict(dict_t * dict);
+void str_destroy(str_t * str);
+void vec_destroy(vec_t * vec);
+void list_destroy(list_t * list);
+void dict_destroy(dict_t * dict);
 
 static const void * DESTROY_OBJ[] = {
-    &destroy_vec,
-    &destroy_list,
-    &destroy_dict,
+    &str_destroy,
+    &vec_destroy,
+    &list_destroy,
+    &dict_destroy,
 };
 
 void destroy(void * obj)

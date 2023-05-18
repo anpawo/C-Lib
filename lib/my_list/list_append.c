@@ -5,10 +5,12 @@
 ** create a str_t (string)
 */
 
-#include "my_list.h"
+#include "my_object.h"
 #include "my_utils.h"
 
-static list_t * insert_at_end(list_t ** ptr, ...)
+list_t * list_insert(list_t ** ptr, va_list ap);
+
+static list_t * convert_to_insert(list_t ** ptr, ...)
 {
     list_t * list = NULL;
     va_list ap;
@@ -22,9 +24,8 @@ static list_t * insert_at_end(list_t ** ptr, ...)
 
 list_t * list_append(list_t ** ptr, va_list ap)
 {
-    list_t * list = * ptr;
-    size_t index = list->len;
+    size_t index = (* ptr)->len;
     void * data = va_arg(ap, void *);
 
-    return insert_at_end(ptr, index, data);
+    return convert_to_insert(ptr, index, data);
 }

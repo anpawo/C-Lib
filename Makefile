@@ -18,6 +18,7 @@ LIB_DIR		=	./lib
 UTILS_DIR	=	$(LIB_DIR)/my_utils
 OBJECT_DIR	=	$(LIB_DIR)/my_object
 VECTOR_DIR	=	$(LIB_DIR)/my_vector
+STRING_DIR	=	$(LIB_DIR)/my_string
 LIST_DIR	=	$(LIB_DIR)/my_list
 DICT_DIR	=	$(LIB_DIR)/my_dict
 PRINT_DIR	=	$(LIB_DIR)/my_print
@@ -27,6 +28,7 @@ LIB			=	$(wildcard $(OBJECT_DIR)/*.c)	\
 				$(wildcard $(UTILS_DIR)/*.c)	\
 				$(wildcard $(LIST_DIR)/*.c)		\
 				$(wildcard $(DICT_DIR)/*.c)		\
+				$(wildcard $(STRING_DIR)/*.c)	\
 				$(wildcard $(PRINT_DIR)/*.c)	\
 
 SRC			=	$(wildcard $(SRC_DIR)/*.c)

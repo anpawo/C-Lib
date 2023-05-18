@@ -5,10 +5,11 @@
 ** create a str_t (string)
 */
 
-#include "my_vector.h"
-#include "my_utils.h"
+#include "my_object.h"
 
-static void * vector_append(void ** ptr, ...)
+void * vec_insert(void ** ptr, va_list ap);
+
+static void * convert_to_insert(void ** ptr, ...)
 {
     vec_t * vec = NULL;
     va_list ap;
@@ -26,5 +27,5 @@ void * vec_append(void ** ptr, va_list ap)
     size_t index = vec->len;
     void * data = va_arg(ap, void *);
 
-    return vector_append(ptr, index, data);
+    return convert_to_insert(ptr, index, data);
 }

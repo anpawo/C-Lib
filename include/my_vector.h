@@ -8,22 +8,21 @@
 #ifndef MY_VEC
     #define MY_VEC
 
-    #include "my_object.h"
+    #include <stddef.h>
 
-void * create_vec(va_list ap);
-void * resize_vec(void ** ptr, size_t len);
-void * vec_duplic(vec_t * vec);
+    #define VEC_DEF(type, name)     \
+                                    \
+    typedef struct vec##name##_s { \
+        int size_data;              \
+        size_t len;                 \
+        size_t cap;                 \
+        type data[0];               \
+    } vec##name##_t;               \
 
-void * create_str(va_list ap);
-void * create_nstr(va_list ap);
-
-void * vec_append(void ** ptr, va_list ap);
-void * vec_insert(void ** ptr, va_list ap);
-void * vec_update(vec_t * vec, va_list ap);
-void * vec_delete(vec_t * vec, va_list ap);
-
-void destroy_vec(vec_t * vec);
-
-str_t * vec_to_str(vec_t * vec, str_t ** buff);
+VEC_DEF(char,)
+VEC_DEF(int, _int)
+VEC_DEF(float, _float)
+VEC_DEF(size_t, _size)
+VEC_DEF(double, _double)
 
 #endif /* MY_VEC */

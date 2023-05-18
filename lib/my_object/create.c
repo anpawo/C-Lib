@@ -7,24 +7,24 @@
 
 #include "my_object.h"
 
-void * create_vec(va_list ap);
-void * create_str(va_list ap);
-void * create_nstr(va_list ap);
-list_t * create_list(va_list ap);
-dict_t * create_dict(va_list ap);
+str_t * str_create(va_list ap);
+void * vec_create(va_list ap);
+list_t * list_create(va_list ap);
+dict_t * dict_create(va_list ap);
+// void * create_nstr(va_list ap);
 
-static const void * CREATE_OBJ[] = {
-    &create_vec,
-    &create_list,
-    &create_dict,
-    &create_str,
-    &create_nstr,
+// this should be a double array for NSTR
+static const void * CREATE[] = {
+    &str_create,
+    &vec_create,
+    &list_create,
+    &dict_create,
 };
 
 void * create(int type, ...)
 {
     void * obj = NULL;
-    void * (* create_obj)(va_list) = CREATE_OBJ[type];
+    void * (* create_obj)(va_list) = CREATE[type];
     va_list ap;
 
     va_start(ap, type);

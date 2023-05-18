@@ -5,7 +5,7 @@
 ** create a str_t (string)
 */
 
-#include "my_list.h"
+#include "my_object.h"
 #include "my_utils.h"
 
 list_t * list_delete(list_t * list, va_list ap)

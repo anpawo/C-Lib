@@ -5,10 +5,9 @@
 ** create a str_t (string)
 */
 
-#include "my_dict.h"
-#include "my_utils.h"
+#include "my_object.h"
 
-static void append_bucket(list_t * bucket, str_t ** str)
+static void add_bucket(list_t * bucket, str_t ** str)
 {
     for (size_t n = 0; n < bucket->len; n += 2) {
         string(bucket->data[n], str);
@@ -18,12 +17,12 @@ static void append_bucket(list_t * bucket, str_t ** str)
     }
 }
 
-str_t * dict_to_str(dict_t * dict, str_t ** buff)
+str_t * dict_to_string(dict_t * dict, str_t ** buff)
 {
     str_t * str = NULL;
 
     if (buff == NULL) {
-        str = STR("{");
+        str = create(STR, "{");
     } else {
         str = *buff;
         append(&str, "{");
@@ -31,7 +30,7 @@ str_t * dict_to_str(dict_t * dict, str_t ** buff)
     for (size_t i = 0; i < dict->cap; i++) {
         if (dict->buck[i] == NULL)
             continue;
-        append_bucket(dict->buck[i], &str);
+        add_bucket(dict->buck[i], &str);
     }
     if (str->data[str->len - 1] == ' ')
         str->len -= 2;

@@ -10,9 +10,7 @@
 
     #include "my_object.h"
     #include "my_utils.h"
-    #include "my_vector.h"
-    #include "my_dict.h"
-    #include "my_list.h"
     #include "my_print.h"
+    #include "my_def.h"
 
 #endif /* MY_LIB */

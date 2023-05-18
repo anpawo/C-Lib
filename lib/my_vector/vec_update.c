@@ -5,7 +5,7 @@
 ** create a str_t (string)
 */
 
-#include "my_vector.h"
+#include "my_object.h"
 #include "my_utils.h"
 
 void * vec_update(vec_t * vec, va_list ap)

@@ -6,6 +6,7 @@
 */
 
 #include "my_print.h"
+#include "my_utils.h"
 
 void add_chr(str_t ** str, va_list ap)
 {

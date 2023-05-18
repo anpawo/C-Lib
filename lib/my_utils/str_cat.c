@@ -9,14 +9,13 @@
 
 char * str_cat(char * dst, const char * src)
 {
-    size_t dstp = (size_t) dst + str_len(dst);
+    dst += str_len(dst);
 
     while (*src) {
-        ((char *) dstp)[0] = *src;
-        dstp += 1;
+        *dst = *src;
         src += 1;
     }
-    ((char *) dstp)[0] = '\0';
+    *dst = '\0';
 
     return dst;
 }

@@ -5,8 +5,7 @@
 ** create a str_t (string)
 */
 
-#include "my_list.h"
-#include "my_utils.h"
+#include "my_object.h"
 
 list_t * list_update(list_t * list, va_list ap)
 {
@@ -18,7 +17,6 @@ list_t * list_update(list_t * list, va_list ap)
     }
 
     destroy(list->data[index]);
-
     list->data[index] = data;
 
     return list;

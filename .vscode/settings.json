@@ -47,6 +47,10 @@
         "istream": "c",
         "new": "c",
         "numeric": "c",
-        "system_error": "c"
+        "system_error": "c",
+        "my_string.h": "c",
+        "stdint.h": "c",
+        "stdint-gcc.h": "c",
+        "initializer_list": "c"
     }
 }

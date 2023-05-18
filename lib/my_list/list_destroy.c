@@ -5,10 +5,9 @@
 ** create a str_t (string)
 */
 
-#include "my_list.h"
-#include "my_utils.h"
+#include "my_object.h"
 
-void destroy_list(list_t * list)
+void list_destroy(list_t * list)
 {
     if (list == NULL) {
         return;

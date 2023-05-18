@@ -5,8 +5,7 @@
 ** create a str_t (string)
 */
 
-#include "my_dict.h"
-#include "my_utils.h"
+#include "my_object.h"
 
 dict_t * dict_update(dict_t * dict, va_list ap)
 {

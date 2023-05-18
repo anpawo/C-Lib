@@ -5,10 +5,10 @@
 ** create a str_t (string)
 */
 
-#include "my_list.h"
+#include "my_object.h"
 #include "my_utils.h"
 
-list_t * create_list(va_list ap)
+list_t * list_create(va_list ap)
 {
     size_t len = va_arg(ap, size_t);
     size_t cap = pad_len(len);

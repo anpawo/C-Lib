@@ -5,10 +5,9 @@
 ** create a str_t (string)
 */
 
-#include "my_dict.h"
-#include "my_utils.h"
+#include "my_object.h"
 
-void destroy_dict(dict_t * dict)
+void dict_destroy(dict_t * dict)
 {
     if (dict == NULL) {
         return;

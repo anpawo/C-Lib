@@ -8,7 +8,7 @@
 #ifndef MY_UTILS
     #define MY_UTILS
 
-    #include "my_def.h"
+    #include <stddef.h>
 
 size_t str_len(char * str);
 size_t pad_len(size_t len);
@@ -25,7 +25,7 @@ void * mem_set(void * dst, int c, size_t n);
 char * my_itoa(long int nbr);
 char * my_ftoa(double nbr, int precision);
 
-double power(int x, int p);
+double power(int x, int p);//TODO MATHS with ABS
 
 void vfree(size_t n, ...);
 void try_free(void * ptr);

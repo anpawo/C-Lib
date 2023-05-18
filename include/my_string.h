@@ -5,15 +5,15 @@
 ** header
 */
 
-#ifndef MY_LIST
-    #define MY_LIST
+#ifndef MY_STRING
+    #define MY_STRING
 
     #include <stddef.h>
 
-typedef struct list_s {
+typedef struct str_s {
     size_t len;
     size_t cap;
-    void * data[0];
-} list_t;
+    char data[0];
+} str_t;
 
-#endif /* MY_LIST */
+#endif /* MY_STRING */

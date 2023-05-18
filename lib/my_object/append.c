@@ -7,11 +7,13 @@
 
 #include "my_object.h"
 
+str_t * str_append(str_t ** ptr, va_list ap);
 void * vec_append(void ** ptr, va_list ap);
 list_t * list_append(list_t ** ptr, va_list ap);
 dict_t * dict_append(dict_t ** ptr, va_list ap);
 
 static const void * APPEND_DATA[] = {
+    &str_append,
     &vec_append,
     &list_append,
     &dict_append,

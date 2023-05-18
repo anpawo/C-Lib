@@ -7,11 +7,13 @@
 
 #include "my_object.h"
 
+str_t * str_delete(str_t * str, va_list ap);
 void * vec_delete(vec_t * vec, va_list ap);
 list_t * list_delete(list_t * list, va_list ap);
 dict_t * dict_delete(dict_t * dict, va_list ap);
 
 static const void * DELETE_DATA[] = {
+    &str_delete,
     &vec_delete,
     &list_delete,
     &dict_delete,

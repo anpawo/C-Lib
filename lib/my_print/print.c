@@ -5,8 +5,9 @@
 ** utils
 */
 
-#include "my_lib.h"
 #include <unistd.h>
+
+#include "my_print.h"
 
 void add_chr(str_t ** str, va_list ap);
 void add_str(str_t ** str, va_list ap);
@@ -22,7 +23,7 @@ static const formater_t FORMAT[] = {
     { 'o', &add_obj },
 };
 
-// this only work because of little endian encoding.
+// this only work because of little endian encoding (i think).
 // since the append function will consider the int as an array of char
 // since the first byte is the value and the second is a 0 ('\0').
 // this works
@@ -55,7 +56,7 @@ static void parse_format(const char * format, str_t ** str, va_list ap)
 
 size_t print(const char * format, ...)
 {
-    AUTOFREE str_t * str = STR("");
+    AUTOFREE str_t * str = create(STR, "");
     va_list ap;
 
     va_start(ap, format);

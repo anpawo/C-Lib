@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 #include "my_utils.h"
+#include "my_def.h"
 
 char * my_ftoa(double nbr, int precision)
 {

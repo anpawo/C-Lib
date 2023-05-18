@@ -7,14 +7,16 @@
 
 #include "my_object.h"
 
-str_t * vec_to_str(vec_t * vec, str_t ** buff);
-str_t * list_to_str(list_t * list, str_t ** buff);
-str_t * dict_to_str(dict_t * dict, str_t ** buff);
+str_t * str_to_string(str_t * src, str_t ** buff);
+str_t * vec_to_string(vec_t * vec, str_t ** buff);
+str_t * list_to_string(list_t * list, str_t ** buff);
+str_t * dict_to_string(dict_t * dict, str_t ** buff);
 
 static const void * CONVERT_TO_STR[] = {
-    &vec_to_str,
-    &list_to_str,
-    &dict_to_str,
+    &str_to_string,
+    &vec_to_string,
+    &list_to_string,
+    &dict_to_string,
 };
 
 str_t * string(void * obj, str_t ** buff)
