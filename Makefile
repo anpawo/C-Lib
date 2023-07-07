@@ -59,8 +59,6 @@ fclean:	clean
 re: fclean all
 
 style: fclean
-	~/delivery/banana/coding-style.sh . ~/delivery/banana/
-	clear
-	@ cat ~/delivery/banana/coding-style-reports.log
+	@ style
 
 .PHONY:	all	clean fclean re style
