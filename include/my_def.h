@@ -18,7 +18,7 @@
     #define LIST(n)     create(LIST, n)
     #define DICT(n)     create(DICT, n)
 
-    #define TOSTR(c) ((char[]){c, '\0'})
+    // #define TOSTR(c) ((char[]){c, '\0'})
     #define ABS(x) (((x) < 0) ? -(x) : (x))
 
 #endif /* MY_DEF */

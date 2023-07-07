@@ -25,7 +25,7 @@ void * mem_set(void * dst, int c, size_t n);
 char * my_itoa(long int nbr);
 char * my_ftoa(double nbr, int precision);
 
-double power(int x, int p);//TODO MATHS with ABS
+double power(int x, int p);
 
 void vfree(size_t n, ...);
 void try_free(void * ptr);

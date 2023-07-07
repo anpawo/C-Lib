@@ -19,7 +19,6 @@ void * vec_insert(void ** ptr, va_list ap)
     if (vec->len == vec->cap) {
         vec = vec_resize(ptr, vec->cap + 1);
     }
-
     if (index < vec->len) {
         for (size_t n = (vec->len + 1) * vec->size_data - 1;
             n >= (index + 1) * vec->size_data; n--) {
@@ -28,7 +27,6 @@ void * vec_insert(void ** ptr, va_list ap)
     } else if (index > vec->len) {
         index = vec->len;
     }
-
     mem_cpy(vec->data + index * vec->size_data, data, vec->size_data);
     vec->len += 1;
 
