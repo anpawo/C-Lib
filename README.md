@@ -6,10 +6,10 @@ Library made for EPITECH during my FIRST YEAR
 - Free
 
 # Features
--- VECT --> (list of char, int, float etc...)
--- STRT --> (list of char null terminated)
--- LIST --> (list of objects)
--- DICT --> (list of pairs key/value)
+-- VECT --> (list of char, int, float etc...) 
+-- STRT --> (list of char null terminated) 
+-- LIST --> (list of objects) 
+-- DICT --> (list of pairs key/value) 
 
 Every object type is associated with an ID.
 When using any function, the function acts
