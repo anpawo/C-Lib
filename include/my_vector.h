@@ -12,12 +12,12 @@
 
     #define VEC_DEF(type, name)     \
                                     \
-    typedef struct vec##name##_s { \
+    typedef struct vec##name##_s {  \
         int size_data;              \
         size_t len;                 \
         size_t cap;                 \
         type data[0];               \
-    } vec##name##_t;               \
+    } vec##name##_t;                \
 
 VEC_DEF(char,)
 VEC_DEF(int, _int)
