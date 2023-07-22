@@ -1,22 +1,18 @@
 # C-Lib
 Library made for EPITECH during my FIRST YEAR
 
-# Function Used
-- Malloc ++
-- Free   ++
-
-- Write
-- Open
-- Read
+# Function Used from the libC
+- Malloc
+- Free
 
 # Features
-- VECT  -> optimised array. no more malloc / free.
-- LIST  -> optimised array of objects.
-- DICT  -> keys of any type associated with values of any type.
+-- VECT --> (list of char, int, float etc...)
+-- STRT --> (list of char null terminated)
+-- LIST --> (list of objects)
+-- DICT --> (list of pairs key/value)
 
-Every object is associated with a type.
-The type of an object is used to call every function
-like compare, append, and more...
+Every object type is associated with an ID.
+When using any function, the function acts
+according to the ID type of the object used.
 
-I use the attribute cleanup to simply auto_free every
-object created so free is not needed anymore.
+I use the cleanup attribut to avoid frees.
