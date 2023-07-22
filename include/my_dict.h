@@ -28,7 +28,7 @@ size_t hash_key(const char * key);
 
 /**
  * @brief check if a dict bucket contain a key.
- * put the index in buff if possible.
+ * put the index in buff if buff is non-null.
  *
  * @param bucket bucket to check
  * @param key key to check
