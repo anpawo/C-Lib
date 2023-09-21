@@ -1,2 +1,2 @@
-- Create a garbage collector counter on objects. Only free if counter = 0
+- Create a garbage collector counter on objects. Only free if counter = 0.
 - Correct bugs related to Vectors.
