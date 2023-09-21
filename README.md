@@ -1,5 +1,5 @@
 # C-Lib
-Library made for EPITECH during my FIRST YEAR
+Library made for EPITECH during my FIRST YEAR.
 
 # Function Used from the lib C
 - Malloc
@@ -11,8 +11,8 @@ Library made for EPITECH during my FIRST YEAR
 - LIST - list of objects  
 - DICT -> list of object pairs (key/value)  
 
-Every object type is associated with an ID.  
+# Some Details
+- Every object type is associated with an ID.  
 When using any function, the function acts  
-according to the ID type of the object used.  
-
-I use the cleanup attribut to avoid frees.
+according to the ID type of the object used.
+- I use the cleanup attribut to avoid frees.
