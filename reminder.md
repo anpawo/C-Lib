@@ -1,2 +1,5 @@
 - Create a garbage collector counter on objects. Only free if counter = 0.
-- Correct bugs related to Vectors.
+- Correct bugs related to Vectors (to_string).
+- Create object compare
+- Create sprintf
+- Create qsort
