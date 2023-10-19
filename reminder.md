@@ -3,3 +3,4 @@
 - Create object compare
 - Create sprintf
 - Create qsort
+- Vectors should have their type of data renseigned to adapt the function used on them
