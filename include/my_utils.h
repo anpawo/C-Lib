@@ -30,4 +30,11 @@ double power(int x, int p);
 void vfree(size_t n, ...);
 void try_free(void * ptr);
 
+void sort(
+    void * array,
+    size_t len,
+    int (* compare)(void *, size_t, size_t),
+    void (* swap)(void *, size_t, size_t)
+);
+
 #endif /* MY_UTILS */

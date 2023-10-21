@@ -6,21 +6,21 @@
 */
 
 #include "project.h"
+#include <time.h>
+
 
 int main(void)
 {
-    AUTOFREE str_t * str = STR("hello");
-    AUTOFREE str_t * str2 = duplic(str);
-    AUTOFREE list_t * list = LIST(2);
-    AUTOFREE dict_t * dict = DICT(5);
-    AUTOFREE str_t * test = string(str, NULL);
+    AUTOFREE list_t * list = LIST(30);
 
-    append(&str2, ", ca va ?");
-    append(&list, duplic(str));
-    append(&list, duplic(str2));
-    append(&dict, "salution1", STR("hello"));
-    append(&dict, "salution2", duplic(str2));
-    append(&dict, "lister", duplic(list));
+    srand(time(NULL));
 
-    print("%o\n%o\n%s\n", list, dict, test->data);
+    for (int i = 0; i < 30; i++) {
+        append(&list, STR(TOSTR(97 + (rand() % 26))));
+    }
+    print("%o\n", list);
+
+    sort(list, (int)(list->len), NULL, NULL);
+
+    print("%o\n", list);
 }
